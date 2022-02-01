@@ -55,7 +55,10 @@ const renderReviews = async () => {
   
   const paginationButton = document.querySelector('.paginationButton');
   paginationButton.addEventListener('click', async () => {
-    renderReviews()
+    renderReviews();
+    if(reviewsData.length < (page_number * page_size)) {
+      paginationButton.style.display = 'none';
+    }
   });  
 }
 
