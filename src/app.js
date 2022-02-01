@@ -35,10 +35,9 @@ app.get("/movies/:Id", async (request, response) => {
     : response.status(404).render("404", { kino });
 });
 
-app.get('/api/movies/id/reviews', async (request, response) => {
-  console.log(request.params.Id)
-  const movieReviews = await loadMovieReviews(request.params.Id);
-  console.log(movieReviews);
+app.get('/api/movies/:id/reviews', async (request, response) => {
+  const movieReviews = await loadMovieReviews(request.params.id);
+  response.json(movieReviews);
 })
 
 app.use("/", express.static("./static"));
