@@ -20,24 +20,32 @@ const renderReviews = async () => {
   const reviewsList = document.querySelector('.movieReviewsList');
 
   const reviewsData = await loadReviws();
-  const page_size = 5;
+  const page_size = 2;
   let page_number = 1;
   
   function pagination(array, page_size, page_number) {
     return array.slice((page_number -1) * page_size, page_number * page_size)
   };
 
-  const renderReviews = () => {
+  const renderReviews = (direction) => {
     const data = pagination(reviewsData, page_size, page_number);
-    page_number++
+    if(direction === 'forward') {
+      page_number++
+      console.log(page_number)
+    } else if (direction === 'back') {
+      page_number--
+      console.log(page_number);
+    }
+
+    reviewsList.innerHTML = ''
+
     data.forEach((review) => {
       const li = document.createElement('li');
       
-      if(review.attributes.rating) {
         const rating = document.createElement('div');
         rating.innerHTML = `Betyg: ${review.attributes.rating}`;  
         li.appendChild(rating);
-      }
+      
       
       if(review.attributes.comment) {
         const comment = document.createElement('div');
@@ -56,16 +64,36 @@ const renderReviews = async () => {
     })
   }
 
-  renderReviews()
+  renderReviews('forward')
 
-
-  const paginationButton = document.querySelector('.paginationButton');
-  paginationButton.addEventListener('click', async () => {
-    renderReviews();
-    if(reviewsData.length < (page_number * page_size)) {
-      paginationButton.style.display = 'none';
+  const paginationButtonBack = document.querySelector('.paginationButtonBack');
+  paginationButtonBack.addEventListener('click', async () => {
+    renderReviews('back');
+    // if(reviewsData.length < (page_number * page_size)) {
+    //   paginationButton.style.display = 'none';
+    // }
+    if(page_number < 3) {
+      paginationButtonBack.disabled = true;
     }
+    paginationButtonForward.disabled = false;
   });  
+
+  const paginationButtonForward = document.querySelector('.paginationButtonForward');
+  paginationButtonForward.addEventListener('click', async () => {
+    renderReviews('forward');
+    paginationButtonBack.disabled = false;
+
+    if(reviewsData.length < (page_number * page_size)) {
+      paginationButtonForward.disabled = true;
+    }
+  
+  });  
+
+  
+  
+
+
+
 }
 
 renderReviews();
