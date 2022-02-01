@@ -33,18 +33,24 @@ const renderReviews = async () => {
     data.forEach((review) => {
       const li = document.createElement('li');
       
-      const rating = document.createElement('div');
-      rating.innerHTML = review.attributes.rating;
-
-      const comment = document.createElement('div');
-      comment.innerHTML = review.attributes.comment;
-
-      const author = document.createElement('div');
-      author.innerHTML = review.attributes.author;
-
-      li.appendChild(rating);
-      li.appendChild(comment);
-      li.appendChild(author);
+      if(review.attributes.rating) {
+        const rating = document.createElement('div');
+        rating.innerHTML = `Betyg: ${review.attributes.rating}`;  
+        li.appendChild(rating);
+      }
+      
+      if(review.attributes.comment) {
+        const comment = document.createElement('div');
+        comment.innerHTML = `Kommenter: ${review.attributes.comment}`;
+        li.appendChild(comment);
+      }
+  
+      if(review.attributes.author) {
+        const author = document.createElement('div');
+        author.innerHTML = `Lämnad av: ${review.attributes.author}`;  
+        li.appendChild(author);
+      }
+  
       li.style.paddingTop = '1rem'
       reviewsList.appendChild(li)
     })
@@ -52,7 +58,7 @@ const renderReviews = async () => {
 
   renderReviews()
 
-  
+
   const paginationButton = document.querySelector('.paginationButton');
   paginationButton.addEventListener('click', async () => {
     renderReviews();
