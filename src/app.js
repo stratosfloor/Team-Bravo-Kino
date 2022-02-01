@@ -3,6 +3,7 @@ import { engine } from "express-handlebars";
 import { loadAllMovies, loadMovie } from "./movies.js";
 import { kino } from "./kinoBuilds.js";
 import { marked } from "marked";
+import loadMovieReviews from "./reviews.js";
 
 const app = express();
 
@@ -28,11 +29,17 @@ app.get("/movies", async (request, response) => {
 });
 
 app.get("/movies/:Id", async (request, response) => {
-  const movie = await loadMovie(request.params.Id);
+    const movie = await loadMovie(request.params.Id);
   movie
     ? response.render("movie", { movie, kino })
     : response.status(404).render("404", { kino });
 });
+
+app.get('/api/movies/id/reviews', async (request, response) => {
+  console.log(request.params.Id)
+  const movieReviews = await loadMovieReviews(request.params.Id);
+  console.log(movieReviews);
+})
 
 app.use("/", express.static("./static"));
 
