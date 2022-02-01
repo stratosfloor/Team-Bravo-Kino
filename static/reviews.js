@@ -55,7 +55,8 @@ const renderReviews = async () => {
         li.appendChild(author);
       }
 
-      li.style.paddingTop = '1rem';
+      li.style.paddingTop = '0.5rem';
+      li.style.paddingBottom = '0.5rem';
       reviewsList.appendChild(li);
     });
   };
