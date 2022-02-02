@@ -12,7 +12,18 @@ const trimData = (dataArray) => {
       verified: review.attributes.verified,
     };
   });
-  return data;
+  const verifiedReviewData = filterVerified(data);
+  return verifiedReviewData;
+};
+
+const filterVerified = (dataArray) => {
+  const filteredArr = dataArray.filter((review) => {
+    if (review.verified) {
+      return review;
+    }
+  });
+
+  return filteredArr;
 };
 
 const loadMovieReviews = async (movieId) => {
