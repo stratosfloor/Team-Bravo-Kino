@@ -8,7 +8,8 @@ const renderReviews = async () => {
       const URL = `/api/movies/${movieId}/reviews`;
       const response = await fetch(URL);
       const payload = await response.json();
-      return payload;
+      console.log(payload.data);
+      return payload.data;
     } catch (error) {
       console.log(error);
     }
@@ -40,18 +41,18 @@ const renderReviews = async () => {
       const li = document.createElement('li');
 
       const rating = document.createElement('div');
-      rating.innerHTML = `Betyg: ${review.attributes.rating}`;
+      rating.innerHTML = `Betyg: ${review.rating}`;
       li.appendChild(rating);
 
-      if (review.attributes.comment) {
+      if (review.comment) {
         const comment = document.createElement('div');
-        comment.innerHTML = `Kommenter: ${review.attributes.comment}`;
+        comment.innerHTML = `Kommenter: ${review.comment}`;
         li.appendChild(comment);
       }
 
-      if (review.attributes.author) {
+      if (review.author) {
         const author = document.createElement('div');
-        author.innerHTML = `Lämnad av: ${review.attributes.author}`;
+        author.innerHTML = `Lämnad av: ${review.author}`;
         li.appendChild(author);
       }
 
