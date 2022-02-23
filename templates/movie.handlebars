@@ -1,11 +1,13 @@
-
+ <div class="moviesTitle">
+  <h1 >Movie</h1>
+  </div>
 <div class="moviePage">
   <div class="reviews">
     <ul id="reviewsList"></ul>
   </div>
 
   <div class="movieMeta">
-   <h1>{{movie.title}}</h1>
+   <h2>{{movie.title}}</h2>
     {{! IMDB Rating Button }}
     {{! Stolen code from IMDB }}
     <div class="imdbBtn">
@@ -22,17 +24,17 @@
    
 
   </div>
-  <img src="{{movie.attributes.image.url}}" />
+  
   
     {{!-- {{{markdown movie.intro}}} --}}
-  <img src="{{movie.image.url}}" />
+  <img alt="Image for the movie" src="{{movie.image.url}}" />
 
    <div class="ratings">
-      <h3>Rating</h3> 
+      <h2>Rating</h2> 
     <div id="rating"></div>
 
  <div id="screenings">
-      <h2>Kommande visningar</h2>
+      <h3>Kommande visningar</h3>
       <ul id="screeningsList"></ul>
     </div>
 

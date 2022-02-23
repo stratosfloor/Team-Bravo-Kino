@@ -305,6 +305,7 @@ img {
     margin-top: 0.3rem;
     font-size: 0.8rem;
     font-weight: 500;
+    color: white;
   }
 }
 .moviePage {
@@ -429,4 +430,18 @@ img {
   flex-direction: column;
   font-size: 30px;
   align-items: center;
+}
+
+.moviesTitle{
+  display:flex;
+  justify-content: center;
+ 
+
+  font-size: 70px;
+}
+
+.moviesTitle h1{
+  display:flex;
+  justify-content: center;
+ 
 }
