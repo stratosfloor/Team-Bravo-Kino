@@ -69,6 +69,20 @@ img {
   display: flex;
   justify-content: flex-end;
 }
+.header .skip {
+  color: salmon;
+  background-color: white;
+  width: fit-content;
+  position: absolute;
+  right: 1rem;
+  padding: 0.5rem 1.5rem;
+  border-radius: 0 0 0.25rem 0.25rem;
+  transform: translateY(-120%);
+  transition: transform 325ms ease-in;
+}
+.header .skip:focus {
+  transform: translateY(0);
+}
 
 .hero {
   background-color: #100f0f;
