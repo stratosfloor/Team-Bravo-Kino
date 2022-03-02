@@ -26,8 +26,9 @@ const renderReviews = async () => {
 // Render the reviews for page number #
 const renderReviewPage = async (reviews, reviewsPerPage, totalPages, pageNumber) => {
 
-  const reviewDiv = document.querySelector("#reviewsList");
+  const reviewDiv = document.querySelector("#reviewsDiv");
   reviewDiv.innerHTML = "";
+  const reviewsList = document.createElement('ul');
 
   // Create reviews in DOM
   for(let i = (pageNumber-1) * reviewsPerPage; i < reviewsPerPage*pageNumber; i++) {
@@ -49,9 +50,10 @@ const renderReviewPage = async (reviews, reviewsPerPage, totalPages, pageNumber)
       li.append(rating);
       li.append(author);
   
-      reviewDiv.append(li);
+      reviewsList.append(li);
     }
   }
+  reviewDiv.append(reviewsList);
   // If more than 5 reviews, create pages and buttons to see more reviews
   if (totalPages > 1) {
     const pages = document.createElement('div');
@@ -89,7 +91,7 @@ const renderReviewPage = async (reviews, reviewsPerPage, totalPages, pageNumber)
     pages.append(prevPage);
     pages.append(showPageNumbers);
     pages.append(nextPage);
-    document.querySelector('#reviewsList').append(pages);
+    reviewDiv.append(pages);
   }
 }
 
