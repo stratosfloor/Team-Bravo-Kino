@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -11,7 +10,7 @@
       href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="/main.css"/>
+    <link rel="stylesheet" href="/main.css" />
   </head>
   <body>
     <div class="header">
@@ -19,15 +18,15 @@
         skip navigation
       </a>
       <div class="headerLogo"><a href="/">
-        <h1 style="color: white">KINO</h1>
-        <p style="color: white">PÅ MARS</p></a>
+          <h1 style="color: white">KINO</h1>
+          <p style="color: white">PÅ MARS</p></a>
       </div>
       <nav class="headerNav">
-        <ul class="headerNavMenu" role="menu">
+        <ul class="headerNavMenu" role="list">
           {{#each kino.menu}}
-          <li role="menuitem">
-            <a href="{{ this.link }}">{{ this.label }}</a>
-          </li>
+            <li role="listitem">
+              <a href="{{this.link}}">{{this.label}}</a>
+            </li>
           {{/each}}
         </ul>
       </nav>
@@ -36,17 +35,17 @@
       {{{body}}}
     </main>
     <div class="footer">
-      <div class="footerLinks">
-          {{#each kino.menu}}
+      <ul class="footerLinks">
+        {{#each kino.menu}}
           <li>
-            <a href="{{ this.link }}">{{ this.label }}</a>
+            <a href="{{this.link}}">{{this.label}}</a>
           </li>
-          {{/each}}
-      </div>
-      <p class="adress">{{ kino.adress }}</p>
+        {{/each}}
+      </ul>
+      <p class="adress">{{kino.adress}}</p>
       <ul class="socialMedia">
         {{#each kino.social}}
-        <li class="{{ this.class }}"></li>
+          <li class="{{this.class}}"></li>
         {{/each}}
       </ul>
     </div>
