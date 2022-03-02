@@ -1,7 +1,7 @@
 <div class="moviePage">
   <div class="reviews">
     <h3>User Reviews</h3>
-    <ul id="reviewsList"></ul>
+    <div id="reviewsDiv"></div>
     {{!-- Review form start --}}
     <div class="postReview">
       <h3 id="reviewTitle">Post your own review</h2>
@@ -37,18 +37,6 @@
   </div>
   <div class="movieMeta">
     <h1>{{movie.title}}</h1>
-    {{! IMDB Rating Button }}
-    {{! Stolen code from IMDB }}
-    <div class="imdbBtn">
-      <script>
-        (function(d,s,id){ var js, stags=d.getElementsByTagName(s)[0];
-        if(d.getElementById(id)){ return; } js=d.createElement(s); js.id=id;
-        //js.src="https://ia.media-imdb.com/images/G/01/imdb/plugins/rating/js/rating.js";
-        stags.parentNode.insertBefore(js,stags); })
-        (document,"script","imdb-rating-api");
-      </script>
-      {{! -------}}
-    </div>
     {{{markdown movie.intro}}}
     <div class="ratings">
       <h3 id="ratingTitle">Rating</h3>
